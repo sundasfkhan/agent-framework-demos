@@ -24,6 +24,12 @@ async def main():
             "Please provide information about John Smith, who is a 35-year-old software engineer.",
             response_format=PersonInfo
         )
-    print(result.text)
+
+
+    if result.value:
+        person_info = result.value
+        print(f"Name: {person_info.name}, Age: {person_info.age}, Occupation: {person_info.occupation}")
+    else:
+        print("No structured data found in response")
 
 asyncio.run(main())
