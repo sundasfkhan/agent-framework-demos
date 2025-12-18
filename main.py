@@ -1,18 +1,9 @@
 import asyncio
-import os
-from dotenv import load_dotenv
-from agent_framework.openai import OpenAIChatClient
-
-# Load environment variables from .env file
-load_dotenv()
+from utility import get_openai_client
 
 async def main():
 
-    client = OpenAIChatClient(
-        api_key=os.getenv('API_KEY'),
-        base_url=os.getenv('BASE_URL'),
-        model_id=os.getenv('MODEL_ID')
-    )
+    client = get_openai_client()
 
     agent = client.create_agent(
         instructions="You are good for creating travel plans.",
